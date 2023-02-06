@@ -1,7 +1,7 @@
 // Creating a base name for the MongoDB
 const mongooseBaseName = 'blogy';
 
-//Create the MongoDB URI for the Dev amd Test
+//Create the MongoDB URI for the Dev and Test
 const database = {
     development: `mongodb://localhost:27017/${mongooseBaseName}-development`,
     test: `mongodb://localhost:27017/${mongooseBaseName}-test`

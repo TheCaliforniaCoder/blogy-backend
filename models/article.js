@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const articleSchema = new mongoose.Schema ({
     title: { type: String, required: true},
     content: String,
-    author: { String, required: true },
+    author: { type: String, required: true },
     published: { type: Boolean, default: true},
     publishedOn: { type: Date, default: Date.now}
 }, { timestamps: true });

@@ -11,6 +11,7 @@ mongoose.connection.once('open', () => console.log('Connected to MongoDB'))
 
 //Require Route Files
 const indexRouter = require('./routes/index');
+const articlesRouter = require('./routes/articles')
 
 // Instantiate Express Application Object
 const app = express();
@@ -23,8 +24,10 @@ const port = process.env.PORT || 5001;
  * 
  * Mount imported Routers
  */
-
+//mounting after requiring
+//restart the server
 app.use(indexRouter);
+app.use(articlesRouter)
 
 
 // Start the server and listen for requests on the given port
