@@ -54,5 +54,19 @@ const express = require('express')
   * Description: Create a new article
   */
 
+router.post('/api/articles', (req, res) => {
+    Article.create(req.body.article)
+    // On a successful create action, respond with 201
+    // HTTP Status and the content of the new Article
+    .then((newArticle) => {
+        res.status(201).json({ article: newArticle})
+    })
+    //Catch any error
+    .catch((error) => {
+        res.status(500).json({ error: error})
+    
+    })
+})
+
  // Export the Router so we can user it in the server.js file
  module.exports = router;
