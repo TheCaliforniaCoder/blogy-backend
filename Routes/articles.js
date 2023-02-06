@@ -33,6 +33,28 @@ const express = require('express')
   * Description: Get articles by id
   */
 
+ router.get('/api/articles/:id', (req, res) => {
+    Article.findById(req.params.id)
+    // Return all Articles as an Array
+    .then((article) => {
+     if(article) {
+        res.status(200).json({article: article});
+     } else {
+        // if we couldnt find a document with the matching id
+        res.status(404).json({
+            error: {
+                name: 'DocumentNotFoundError',
+                message: 'The provided ID doesnt match any doc'
+            }
+        })
+     }
+    })
+    // Catch any errors that might occur
+    .catch((error) => {
+        res.status(500).json({ error: error})
+    })
+ })
+
   /**
   * Action:     Destroy
   * Method:     DELETE
@@ -64,7 +86,6 @@ router.post('/api/articles', (req, res) => {
     //Catch any error
     .catch((error) => {
         res.status(500).json({ error: error})
-    
     })
 })
 

@@ -14,6 +14,7 @@ const indexRouter = require('./routes/index');
 const articlesRouter = require('./routes/articles')
 
 // Instantiate Express Application Object
+// order matters this comes before middlware
 const app = express();
 
 //Define Port for the API to run on
